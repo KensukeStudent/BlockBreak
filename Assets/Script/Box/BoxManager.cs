@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Box¶¬ƒNƒ‰ƒX
+/// Boxç”Ÿæˆã‚¯ãƒ©ã‚¹
 /// </summary>
 public class BoxManager : MonoBehaviour
 {
     /// <summary>
-    /// ƒ{ƒbƒNƒXŠi”[
+    /// ãƒœãƒƒã‚¯ã‚¹æ ¼ç´
     /// </summary>
     Box[] boxArray;
 
     /// <summary>
-    /// ”j‰ó‚µ‚½ƒ{ƒbƒNƒX”
+    /// ç ´å£Šã—ãŸãƒœãƒƒã‚¯ã‚¹æ•°
     /// </summary>
     int hitBoxCount = 0;
 
@@ -35,23 +35,22 @@ public class BoxManager : MonoBehaviour
         {
             var box = boxArray[i];
 
-            if (!box.gameObject.activeInHierarchy) return;
-
-            if(box.Hit)
+            if(box.Hit && box.gameObject.activeInHierarchy)
             {
                 box.gameObject.SetActive(false);
+                hitBoxCount++;
 
-                //‘S‚Ä‚Ìƒ{ƒbƒNƒX‚ğ”j‰ó‚µ‚½‚çƒQ[ƒ€ƒNƒŠƒA
+                //å…¨ã¦ã®ãƒœãƒƒã‚¯ã‚¹ã‚’ç ´å£Šã—ãŸã‚‰ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢
                 if (hitBoxCount == boxArray.Length) GameClear();
             }
         }
     }
 
     /// <summary>
-    /// ‘S‚Ä‚ÌƒuƒƒbƒN‚ğ”j‰óo—ˆ‚½‚çƒNƒŠƒA
+    /// å…¨ã¦ã®ãƒ–ãƒ­ãƒƒã‚¯ã‚’ç ´å£Šå‡ºæ¥ãŸã‚‰ã‚¯ãƒªã‚¢
     /// </summary>
     void GameClear()
     {
-        Debug.Log("ƒNƒŠƒA");
+        Debug.Log("ã‚¯ãƒªã‚¢");
     }
 }

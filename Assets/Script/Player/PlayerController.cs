@@ -29,12 +29,15 @@ public class PlayerController : MonoBehaviour
     /// 弾を発射フラグ
     /// </summary>
     bool shotFlag = false;
+    LayerMask ground;
 
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+
+        ground = LayerMask.GetMask("Ground");
     }
 
     private void FixedUpdate()
@@ -70,15 +73,60 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //縦の移動
-        //var v = Input.GetAxisRaw("Vertical");
+        var v = Input.GetAxisRaw("Vertical");
 
         var pos = transform.position;
+        if (IsGround(pos))
+        {
+            //ジャンプ処理
+            Jump(v);
+        }
+
         pos.x = Mathf.Clamp(pos.x, -moveRange + sr.size.x / 2, moveRange - sr.size.x / 2);
         transform.position = pos;
 
+        //高さからアニメーションを変更
+        var y = Mathf.Round(rb2D.velocity.y);
+        anim.SetBool("Jump", y > 0 && !IsGround(pos));
+        anim.SetBool("Fall",( y == 0 || y < 0 ) && !IsGround(pos));
+
+        //弾を発射
         if(Input.GetMouseButtonDown(0) && !shotFlag)
         {
             Shot(pos);
+            shotFlag = true;
+        }
+    }
+
+    /// <summary>
+    /// 地面着地判定
+    /// </summary>
+    /// <returns></returns>
+    bool IsGround(Vector3 pos)
+    {
+        pos.x -= 0.2f;
+        var left = Physics2D.Linecast(pos - transform.right * 0.1f, pos - transform.up * 0.1f, ground);
+
+        pos.x += 0.4f;
+        var right = Physics2D.Linecast(pos + transform.right * 0.1f, pos - transform.up * 0.1f, ground);
+
+        return left || right;
+    }
+
+    /// <summary>
+    /// ジャンプに関する処理
+    /// </summary>
+    void Jump(float y)
+    {
+        //スペースキーでジャンプ
+        if (Input.GetButtonDown("Jump"))
+        {
+            //ジャンプ量を代入します
+            var move = rb2D.velocity;
+            //下への重力速度を0にします
+            move.y = 0;
+            move.y = jumpSpeed;
+            rb2D.velocity = move;
         }
     }
 
@@ -99,8 +147,10 @@ public class PlayerController : MonoBehaviour
         //ラジアンから角度に変換
         var angle = Mathf.Atan2(direct.y, direct.x) * Mathf.Rad2Deg;
 
+        playerPos.y += sr.size.y / 2;
+
         //弾生成
-        var shot = Instantiate(shotObject, transform.position, Quaternion.identity);
+        var shot = Instantiate(shotObject, playerPos, Quaternion.identity);
         ////角度変換
         var rot = shot.transform.localEulerAngles;
         rot.z = angle;

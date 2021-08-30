@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 弾を制御するクラス
+/// 弾基底クラス
 /// </summary>
-public class ShotController : MonoBehaviour
+public abstract class BallBase : MonoBehaviour
 {
     SpriteRenderer sr;
     /// <summary>
@@ -20,36 +20,41 @@ public class ShotController : MonoBehaviour
     /// <summary>
     /// プレイヤー移動可能範囲
     /// </summary>
-    const float moveRangeX = 8;
+    protected const float moveRangeX = 8;
     /// <summary>
     /// Y軸の最大
     /// </summary>
-    const float maxRangeY = 5;
+    protected const float maxRangeY = 5;
     /// <summary>
     /// Y軸の最小
     /// </summary>
-    const float minRangeY = -4;
+    protected const float minRangeY = -4;
 
     /// <summary>
     /// 角度
     /// </summary>
     float angle;
 
-    private void Start()
+    protected virtual void Start()
     {
         angle = transform.localEulerAngles.z;
         sr = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         var pos = transform.position;
-
-        //壁に当たったら反転
-        ChangeVectorByWall(pos);
-
         //移動処理
         transform.position = Move(pos);
+
+        //消滅フラグ
+        if(DeadFlag())
+        {
+            //ゲームオーバー処理
+            GameManager.Instance.ChangeGamaMode(GameMode.GameOver);
+
+            gameObject.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -67,23 +72,19 @@ public class ShotController : MonoBehaviour
     }
 
     /// <summary>
-    /// 移動ベクトルを変更
+    /// MaxXかMinXを超えた時に判定します
     /// </summary>
-    void ChangeVectorByWall(Vector2 pos)
+    protected bool RangeXOver(Vector2 pos)
     {
-        //MaxかMinを超えたら
-        if (pos.x >= moveRangeX - sr.size.x / 2 || pos.x <= -moveRangeX + sr.size.x / 2)
-        {
-            //Xの速度を反転
-            ChangeVectorX();
-        }
+        return pos.x >= moveRangeX - sr.size.x / 2 || pos.x <= -moveRangeX + sr.size.x / 2;
+    }
 
-        //MaxかMinを超えたら
-        if (pos.y >= maxRangeY - sr.size.y / 2 || pos.y <= minRangeY + sr.size.y / 2)
-        {
-            //Yの速度を反転
-            ChangeVectorY();
-        }
+    /// <summary>
+    /// MaxYかMinYを超えた時に判定します
+    /// </summary>
+    protected bool RangeYOver(Vector2 pos)
+    {
+        return pos.y >= maxRangeY - sr.size.y / 2 || pos.y <= minRangeY + sr.size.y / 2;
     }
 
     /// <summary>
@@ -101,4 +102,9 @@ public class ShotController : MonoBehaviour
     {
         moveSpeedY *= -1;
     }
+
+    /// <summary>
+    /// 弾消滅フラグ
+    /// </summary>
+    protected abstract bool DeadFlag();
 }
