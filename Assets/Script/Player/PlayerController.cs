@@ -18,13 +18,16 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// ジャンプ速度
     /// </summary>
-    [SerializeField] float jumpSpeed;
+    const float jumpSpeed = 5.0f;
     /// <summary>
     /// プレイヤー移動可能範囲
     /// </summary>
-    const float moveRange = 8;
+    const float moveRange = 8.9f;
 
-    [SerializeField] GameObject shotObject;
+    /// <summary>
+    /// 発射するボール
+    /// </summary>
+    public GameObject ShotObject { set; get; }
     /// <summary>
     /// 弾を発射フラグ
     /// </summary>
@@ -42,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(GameManager.Instance.gameMode != GameMode.GameStart) return;
+
         //横の移動
         var h = Input.GetAxisRaw("Horizontal");
 
@@ -72,6 +77,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.gameMode != GameMode.GameStart) return;
+
         //縦の移動
         var v = Input.GetAxisRaw("Vertical");
 
@@ -94,7 +101,6 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && !shotFlag)
         {
             Shot(pos);
-            shotFlag = true;
         }
     }
 
@@ -149,11 +155,15 @@ public class PlayerController : MonoBehaviour
 
         playerPos.y += sr.size.y / 2;
 
-        //弾生成
-        var shot = Instantiate(shotObject, playerPos, Quaternion.identity);
+        //座標設定
+        ShotObject.transform.position = playerPos;
         ////角度変換
-        var rot = shot.transform.localEulerAngles;
+        var rot = ShotObject.transform.localEulerAngles;
         rot.z = angle;
-        shot.transform.localEulerAngles = rot;
+        ShotObject.transform.localEulerAngles = rot;
+
+        //弾を表示
+        ShotObject.SetActive(true);
+        shotFlag = true;
     }
 }

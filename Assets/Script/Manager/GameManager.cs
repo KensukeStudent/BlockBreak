@@ -11,12 +11,14 @@ public enum GameMode
 }
 
 /// <summary>
-/// ƒQ[ƒ€ŠÇ—
+/// ã‚²ãƒ¼ãƒ ç®¡ç†
 /// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { private set; get; }
     public GameMode gameMode { private set; get; } = GameMode.GameWait;
+    [SerializeField] StageManager stageMan;
+    [SerializeField] UIManager uiMan;
 
     private void Awake()
     {
@@ -26,14 +28,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //ŠÔ‚ğ’x‚ç‚¹‚ÄƒXƒ^[ƒg
-
-    }
-
     /// <summary>
-    /// ƒQ[ƒ€ƒ‚[ƒh‚ğ•ÏX
+    /// ã‚²ãƒ¼ãƒ ãƒ¢ãƒ¼ãƒ‰ã‚’å¤‰æ›´
     /// </summary>
     public void ChangeGamaMode(GameMode mode)
     {
@@ -41,20 +37,29 @@ public class GameManager : MonoBehaviour
 
         switch (gameMode)
         {
-            //¡‰ñ‚Ì‚¨‘è
+            //ä»Šå›ã®ãŠé¡Œ
             case GameMode.GameStart:
-            
+
+                //ä»Šå›ã®ã‚¹ãƒ†ãƒ¼ã‚¸ã®ãƒœãƒ¼ãƒ«ã‚’å‰²ã‚Šå½“ã¦ã‚‹
+                stageMan.GetBallAblity();
+
                 break;
             
-            //ƒQ[ƒ€ƒI[ƒo[UI•\¦
+            //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼UIè¡¨ç¤º
             case GameMode.GameOver:
-            
+
+                //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼UIè¡¨ç¤º
+                uiMan.ActiveGameOver();
+
                 break;
             
-            //ƒQ[ƒ€ƒNƒŠƒAUI•\¦
-            //Ÿ‚Ì‘JˆÚ
+            //ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢UIè¡¨ç¤º
+            //æ¬¡ã®é·ç§»
             case GameMode.GameClear:
-            
+
+                //ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢UIè¡¨ç¤º
+                uiMan.ActiveGameClear();
+                stageMan.NextScene();
                 break;
             
             default:
