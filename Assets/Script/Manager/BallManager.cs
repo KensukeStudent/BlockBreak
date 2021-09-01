@@ -6,7 +6,7 @@ public enum BallType
 {
     RangeOut,//上下左右幅を超えたら消滅
     GroundOut,//地面に当たったら消滅
-    OneDamage,//オブジェクトに触れたら消滅
+    TimeOut,//時間制限
 };
 
 /// <summary>
@@ -22,12 +22,7 @@ public class BallManager : MonoBehaviour
     {
         ballAblities[0] = new RangeOutBall();
         ballAblities[1] = new GroundOutBall();
-        ballAblities[2] = new OneDamageOut();
-    }
-
-    private void Awake()
-    {
-        //DontDestroyOnLoad(gameObject);
+        ballAblities[2] = new TimeOutBall();
     }
 
     /// <summary>

@@ -34,10 +34,14 @@ public class BoxManager : MonoBehaviour
         for (int i = 0; i < boxArray.Length; i++)
         {
             var box = boxArray[i];
+            //更新処理
+            if (!box.Anim) box.OnUpdate();
 
-            if(box.Hit && box.gameObject.activeInHierarchy)
+            if(box.Hit && !box.Anim)
             {
-                box.gameObject.SetActive(false);
+                //破壊アニメーション再生
+                box.SetBreak();
+
                 hitBoxCount++;
 
                 //全てのボックスを破壊したらゲームクリア

@@ -7,25 +7,54 @@ using UnityEngine;
 /// </summary>
 public class Box : MonoBehaviour
 {
+    Animator anim;
     /// <summary>
     /// 当たったか判定
     /// </summary>
     public bool Hit { private set; get; } = false;
+    /// <summary>
+    /// アニメションは再生したかフラグ
+    /// </summary>
+    public bool Anim { private set; get; } = false;
+   
+    /// <summary>
+    /// ヒットオブジェクト名
+    /// </summary>
+    [SerializeField] string hitName = "Ball";
 
     /// <summary>
-    /// 初期化
+    /// サウンドクラス
     /// </summary>
-    public void Initialize(float x, float y)
+    ISoundClass sound = new ISoundClass();
+    [SerializeField] AudioClip[] clip;
+
+    protected virtual void Start()
     {
-        //座標セット
-        transform.position = new Vector2(x, y);
+        anim = GetComponent<Animator>();
+        sound.audio = GetComponent<AudioSource>();
+        sound.clip = clip;
     }
+
+    /// <summary>
+    /// 更新処理
+    /// </summary>
+    public virtual void OnUpdate() { }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.CompareTag("Shot"))
+        if(col.gameObject.CompareTag(hitName))
         {
             Hit = true;
         }
+    }
+
+    /// <summary>
+    /// 破壊アニメーション再生
+    /// </summary>
+    public void SetBreak()
+    {
+        Anim = true;
+        anim.SetBool("Break", true);
+        sound.PlaySE();
     }
 }

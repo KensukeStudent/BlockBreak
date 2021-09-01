@@ -13,9 +13,9 @@ public class StageManager : MonoBehaviour
     /// </summary>
     const int stageCount = 5;
     /// <summary>
-    /// 記録はstatic化
+    /// 現在のステージ数
     /// </summary>
-    public static int nowStage = 1;
+    int nowStage = 0;
     /// <summary>
     /// ボール管理
     /// </summary>
@@ -27,10 +27,10 @@ public class StageManager : MonoBehaviour
     BallType[] ballType = 
     {
         BallType.RangeOut, 
+        BallType.GroundOut, 
         BallType.RangeOut, 
-        BallType.RangeOut, 
-        BallType.RangeOut, 
-        BallType.RangeOut, 
+        BallType.TimeOut, 
+        BallType.GroundOut, 
     };
 
     /// <summary>
@@ -46,10 +46,30 @@ public class StageManager : MonoBehaviour
     /// <summary>
     /// 次のSceneに遷移
     /// </summary>
-    public void NextScene()
+    public void NextSceneLoad()
     {
         nowStage++;
-        var nextScene = "Stage" + nowStage;
-        SceneManager.LoadScene(nextScene);
+
+        if(nowStage == stageCount)
+        {
+            SceneManager.LoadScene("Ending");
+
+            //ステージ内で常に使っていたオブジェクトを破棄
+            var managerObject = GameObject.Find("Manager");
+            Destroy(managerObject);
+        }
+        else
+        {
+            var nextScene = "Stage" + (nowStage + 1);
+            SceneManager.LoadScene(nextScene);
+        }
+    }
+
+    /// <summary>
+    /// 現在のSceneを遷移
+    /// </summary>
+    public void NowSceneLoad()
+    {
+        SceneManager.LoadScene("Stage" + (nowStage + 1));
     }
 }

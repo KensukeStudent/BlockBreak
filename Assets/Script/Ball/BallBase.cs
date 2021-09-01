@@ -11,24 +11,24 @@ public class BallBase : MonoBehaviour
     /// <summary>
     /// 移動速度X
     /// </summary>
-    [SerializeField] float moveSpeedX = 8.0f;
+    float moveSpeedX = 8.0f;
     /// <summary>
     /// 移動速度Y
     /// </summary>
-    [SerializeField] float moveSpeedY = 8.0f;
+    float moveSpeedY = 8.0f;
 
     /// <summary>
     /// プレイヤー移動可能範囲
     /// </summary>
-    protected const float moveRangeX = 8.9f;
+    const float moveRangeX = 8.9f;
     /// <summary>
     /// Y軸の最大
     /// </summary>
-    protected const float maxRangeY = 5;
+    const float maxRangeY = 5;
     /// <summary>
     /// Y軸の最小
     /// </summary>
-    protected const float minRangeY = -4;
+    const float minRangeY = -4;
 
     /// <summary>
     /// 角度
@@ -40,13 +40,23 @@ public class BallBase : MonoBehaviour
     /// </summary>
     BallAblity ablity;
 
+    /// <summary>
+    /// サウンドクラス
+    /// </summary>
+    ISoundClass sound = new ISoundClass();
+    [SerializeField] AudioClip[] clip;
+
     protected virtual void Start()
     {
         //能力に自分を参照させます
         ablity.SetBallBase(this);
 
+        //角度を取得
         angle = transform.localEulerAngles.z;
         sr = GetComponent<SpriteRenderer>();
+
+        sound.audio = GetComponent<AudioSource>();
+        sound.clip = clip;
     }
 
     protected virtual void Update()
@@ -68,6 +78,9 @@ public class BallBase : MonoBehaviour
             GameManager.Instance.ChangeGamaMode(GameMode.GameOver);
 
             gameObject.SetActive(false);
+
+            //退場処理
+            ablity.Exit();
         }
     }
 
@@ -107,6 +120,7 @@ public class BallBase : MonoBehaviour
     public void ChangeVectorX()
     {
         moveSpeedX *= -1;
+        sound.PlaySE();
     }
 
     /// <summary>
@@ -115,6 +129,7 @@ public class BallBase : MonoBehaviour
     public void ChangeVectorY()
     {
         moveSpeedY *= -1;
+        sound.PlaySE();
     }
 
     /// <summary>
@@ -124,5 +139,16 @@ public class BallBase : MonoBehaviour
     public void SetAblity(BallAblity ablity)
     {
         this.ablity = ablity;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        //タグ名が空ならリターン
+        if (string.IsNullOrEmpty(ablity.GetDeadHit())) return;
+
+        if(col.gameObject.CompareTag(ablity.GetDeadHit()))
+        {
+            ablity.deadFlag = true;
+        }
     }
 }

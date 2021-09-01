@@ -32,7 +32,16 @@ public class PlayerController : MonoBehaviour
     /// 弾を発射フラグ
     /// </summary>
     bool shotFlag = false;
+    /// <summary>
+    /// 地面設置
+    /// </summary>
     LayerMask ground;
+
+    /// <summary>
+    /// サウンドクラス
+    /// </summary>
+    ISoundClass sound = new ISoundClass();
+    [SerializeField] AudioClip[] clip;
 
     void Start()
     {
@@ -41,6 +50,9 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         ground = LayerMask.GetMask("Ground");
+
+        sound.audio = GetComponent<AudioSource>();
+        sound.clip = clip;
     }
 
     private void FixedUpdate()
@@ -100,7 +112,9 @@ public class PlayerController : MonoBehaviour
         //弾を発射
         if(Input.GetMouseButtonDown(0) && !shotFlag)
         {
+            //弾発射
             Shot(pos);
+            sound.PlaySE();
         }
     }
 

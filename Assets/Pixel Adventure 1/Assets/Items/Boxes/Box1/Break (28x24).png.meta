@@ -70,7 +70,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 47
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -130,18 +130,18 @@ TextureImporter:
       name: Break (28x24)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 28
-        height: 24
+        x: 10
+        y: 9
+        width: 9
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 508b924cbb618a44280512987c5fc2ed
+      spriteID: a4b95c26e69d99db0800000000000000
       internalID: -4784554060977693878
       vertices: []
       indices: 
@@ -151,18 +151,18 @@ TextureImporter:
       name: Break (28x24)_1
       rect:
         serializedVersion: 2
-        x: 28
-        y: 0
-        width: 28
-        height: 24
+        x: 37
+        y: 9
+        width: 11
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d191b9d52c03c2f4b8b0f1192543426f
+      spriteID: 29e36107a99bd6920800000000000000
       internalID: 2985246200973115026
       vertices: []
       indices: 
@@ -172,18 +172,18 @@ TextureImporter:
       name: Break (28x24)_2
       rect:
         serializedVersion: 2
-        x: 56
-        y: 0
-        width: 28
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 65
+        y: 8
+        width: 12
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9821389f8443f2746997753ac4ea8d7c
+      spriteID: 84e622ac4eaaf8f80800000000000000
       internalID: -8102069304995713464
       vertices: []
       indices: 
@@ -193,18 +193,18 @@ TextureImporter:
       name: Break (28x24)_3
       rect:
         serializedVersion: 2
-        x: 84
-        y: 0
-        width: 28
-        height: 24
+        x: 94
+        y: 8
+        width: 8
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42e3af7d015f06f42be38196e48e27e8
+      spriteID: 05df6a8589684e720800000000000000
       internalID: 2874570451049708880
       vertices: []
       indices: 

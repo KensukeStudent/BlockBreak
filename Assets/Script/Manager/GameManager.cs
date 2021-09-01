@@ -7,7 +7,7 @@ public enum GameMode
     GameWait,
     GameStart,
     GameOver,
-    GameClear
+    GameClear,
 }
 
 /// <summary>
@@ -17,14 +17,47 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { private set; get; }
     public GameMode gameMode { private set; get; } = GameMode.GameWait;
-    [SerializeField] StageManager stageMan;
+    /// <summary>
+    /// UI管理クラス
+    /// </summary>
     [SerializeField] UIManager uiMan;
+    /// <summary>
+    /// 遷移クラス
+    /// </summary>
+    [SerializeField] FadeBase fadeMan;
 
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
+        }
+    }
+
+    private void Update()
+    {
+        switch (gameMode)
+        {
+            case GameMode.GameOver:
+            case GameMode.GameClear:
+                
+                if (Input.GetMouseButton(0) && !fadeMan.FadeFlag)
+                {
+                    fadeMan.SetFadeFlag();
+                }
+
+                break;
+
+            case GameMode.GameStart:
+
+                //初めからやり直し
+                if (Input.GetMouseButton(1) && !fadeMan.FadeFlag)
+                {
+                    fadeMan.SetFadeFlag();
+                    gameMode = GameMode.GameOver;
+                }
+
+                break;
         }
     }
 
@@ -36,15 +69,7 @@ public class GameManager : MonoBehaviour
         gameMode = mode;
 
         switch (gameMode)
-        {
-            //今回のお題
-            case GameMode.GameStart:
-
-                //今回のステージのボールを割り当てる
-                stageMan.GetBallAblity();
-
-                break;
-            
+        {            
             //ゲームオーバーUI表示
             case GameMode.GameOver:
 
@@ -59,7 +84,7 @@ public class GameManager : MonoBehaviour
 
                 //ゲームクリアUI表示
                 uiMan.ActiveGameClear();
-                stageMan.NextScene();
+                
                 break;
             
             default:

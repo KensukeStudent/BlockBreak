@@ -46,12 +46,7 @@ public abstract class FadeBase : MonoBehaviour
     /// <summary>
     /// フェイドフラグ
     /// </summary>
-    bool fadeFlag = false;
-
-    private void Start()
-    {
-        SetFadeMode(FadeSequenceType.In);
-    }
+    public bool FadeFlag { private set; get; } = false;
 
     protected virtual void Update()
     {
@@ -74,7 +69,7 @@ public abstract class FadeBase : MonoBehaviour
     /// </summary>
     void FadeUpdate()
     {
-        if (!fadeFlag) return;
+        if (!FadeFlag) return;
 
         switch (fadeSequenceType)
         {
@@ -85,10 +80,10 @@ public abstract class FadeBase : MonoBehaviour
 
                 if (EndIn())
                 {
+                    FadeFlag = false;
                     fadeSequenceType = FadeSequenceType.Out;
                     //継承されるクラスで処理記述
                     FadeInBase();
-                    fadeFlag = false;
                 }
 
                 break;
@@ -100,10 +95,10 @@ public abstract class FadeBase : MonoBehaviour
 
                 if (EndOut())
                 {
+                    FadeFlag = false;
                     fadeSequenceType = FadeSequenceType.In;
                     //継承されるクラスで処理記述
                     FadeOutBase();
-                    fadeFlag = false;
                 }
 
                 break;
@@ -165,7 +160,6 @@ public abstract class FadeBase : MonoBehaviour
     public void SetFadeMode(FadeSequenceType fadeType)
     {
         fadeSequenceType = fadeType;
-        fadeFlag = true;
 
         switch (fadeType)
         {
@@ -177,5 +171,16 @@ public abstract class FadeBase : MonoBehaviour
                 alpha = 0;
                 break;
         }
+
+        panel.fillAmount = alpha;
+        SetFadeFlag();
+    }
+
+    /// <summary>
+    /// フェイド開始
+    /// </summary>
+    public void SetFadeFlag()
+    {
+        FadeFlag = true;
     }
 }

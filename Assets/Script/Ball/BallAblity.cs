@@ -10,13 +10,10 @@ public abstract class BallAblity
     protected BallBase ballBase;
 
     /// <summary>
-    /// 計測時間
+    /// 死亡フラグ判定
     /// </summary>
-    float timer = 0.0f;
-    /// <summary>
-    /// 時間リミット
-    /// </summary>
-    float timeLimit = 10.0f;
+    public bool deadFlag { set; get; } = false;
+    protected string deadHitName = "";
 
     /// <summary>
     /// ボールをセット
@@ -45,21 +42,18 @@ public abstract class BallAblity
     public abstract bool DeadFlag();
 
     /// <summary>
-    /// 消滅時間
+    /// 当たるとゲームオーバーになるオブジェクト名を取得
     /// </summary>
-    /// <returns></returns>
-    protected bool DeadTimer()
+    public string GetDeadHit()
     {
-        timer += Time.deltaTime;
-
-        return timer >= timeLimit;
+        return deadHitName;
     }
 
     /// <summary>
-    /// 消滅時間をセット
+    /// 退場処理
     /// </summary>
-    public void SetDeadTimerLimit(float timeLimit)
+    public virtual void Exit()
     {
-        this.timeLimit = timeLimit;
+        deadFlag = false;
     }
 }

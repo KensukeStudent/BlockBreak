@@ -9,11 +9,17 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     /// <summary>
+    /// 表示テキスト
+    /// </summary>
+    [SerializeField] Text displayText;
+
+    /// <summary>
     /// ゲームオーバーパネル表示
     /// </summary>
     public void ActiveGameOver()
     {
-        Debug.Log("ゲームオーバー");
+        displayText.text = "～ゲームオーバー～";
+        displayText.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -21,6 +27,15 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void ActiveGameClear()
     {
-        Debug.Log("ゲームクリア");
+        displayText.text = "～クリア～";
+        displayText.gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// テキストを非表示
+    /// </summary>
+    public void InActiveDisplayText()
+    {
+        displayText.gameObject.SetActive(false);
     }
 }
