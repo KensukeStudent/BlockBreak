@@ -1006,14 +1006,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveBox
       objectReference: {fileID: 0}
-    - target: {fileID: 4501025449978786921, guid: 3000d69318303074a87727a2f2dad2ea, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501025449978786926, guid: 3000d69318303074a87727a2f2dad2ea, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4501025449978786927, guid: 3000d69318303074a87727a2f2dad2ea, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1057,18 +1049,6 @@ PrefabInstance:
     - target: {fileID: 4501025449978786927, guid: 3000d69318303074a87727a2f2dad2ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117838143512870266, guid: 3000d69318303074a87727a2f2dad2ea, type: 3}
-      propertyPath: startLag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117838143512870266, guid: 3000d69318303074a87727a2f2dad2ea, type: 3}
-      propertyPath: moveSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117838143512870266, guid: 3000d69318303074a87727a2f2dad2ea, type: 3}
-      propertyPath: moveLength
-      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3000d69318303074a87727a2f2dad2ea, type: 3}

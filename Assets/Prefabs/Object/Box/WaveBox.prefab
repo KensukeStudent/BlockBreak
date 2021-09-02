@@ -96,10 +96,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.625}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -146,9 +146,9 @@ MonoBehaviour:
   hitName: Ball
   clip:
   - {fileID: 8300000, guid: 4a574e5408d9aa34bba47a14508cc0d1, type: 3}
-  startLag: 0
-  moveSpeed: 2
-  moveLength: 0
+  startLag: 1
+  moveSpeed: 0.5
+  moveLength: 1.5
 --- !u!82 &-2251007768269779330
 AudioSource:
   m_ObjectHideFlags: 0
