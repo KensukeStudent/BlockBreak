@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-///ƒ{[ƒ‹‚ªG‚ê‚½‚çƒhƒbƒXƒ“‹N“®
+///ãƒœãƒ¼ãƒ«ãŒè§¦ã‚ŒãŸã‚‰ãƒ‰ãƒƒã‚¹ãƒ³èµ·å‹•
 /// </summary>
 public class SiwtchDssun : SwitchButton
 {
     /// <summary>
-    /// ƒhƒbƒXƒ“ƒIƒuƒWƒFƒNƒg
+    /// ãƒ‰ãƒƒã‚¹ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     /// </summary>
     [SerializeField] Dossun dossun;
 

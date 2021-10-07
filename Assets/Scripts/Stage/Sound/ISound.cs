@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒTƒEƒ“ƒhƒCƒ“ƒ^[ƒtƒFƒCƒX
+/// ã‚µã‚¦ãƒ³ãƒ‰ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
 /// </summary>
 interface ISound
 {
     /// <summary>
-    /// ƒI[ƒfƒBƒI
+    /// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ª
     /// </summary>
     [SerializeField] AudioSource audio { get; set; }
     /// <summary>
-    /// ƒI[ƒfƒBƒIƒNƒŠƒbƒv
+    /// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚¯ãƒªãƒƒãƒ—
     /// </summary>
     [SerializeField] AudioClip[] clip { get; set; }
 
     /// <summary>
-    /// SE‚ð–Â‚ç‚·ƒNƒ‰ƒX
+    /// SEã‚’é³´ã‚‰ã™ã‚¯ãƒ©ã‚¹
     /// </summary>
     void PlaySE(int no, float vol = 1.0f);
 }
 
 /// <summary>
-/// ƒTƒEƒ“ƒhƒNƒ‰ƒX
+/// ã‚µã‚¦ãƒ³ãƒ‰ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class ISoundClass : ISound
 {

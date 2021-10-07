@@ -15,7 +15,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
                 instance = FindObjectOfType<T>();
                 if (instance == null)
                 {
-                    Debug.LogError($"{typeof(T)}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
+                    Debug.LogError($"{typeof(T)}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
                 }
             }
 
@@ -40,12 +40,12 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     }
 
     /// <summary>
-    /// ”h¶æ—p‚ÌAwake
+    /// æ´¾ç”Ÿå…ˆç”¨ã®Awake
     /// </summary>
     protected virtual void Init() { }
 
     /// <summary>
-    /// ƒNƒ‰ƒX”rœˆ—
+    /// ã‚¯ãƒ©ã‚¹æ’é™¤å‡¦ç†
     /// </summary>
     public void Delete()
     {

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒ{[ƒ‹‚ªG‚ê‚é‚±‚Æ‚ÅƒAƒNƒVƒ‡ƒ“‚ğ‹N‚±‚·ƒ{ƒ^ƒ“
+/// ãƒœãƒ¼ãƒ«ãŒè§¦ã‚Œã‚‹ã“ã¨ã§ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’èµ·ã“ã™ãƒœã‚¿ãƒ³
 /// </summary>
 public abstract class SwitchButton : MonoBehaviour
 {
     protected SpriteRenderer sr;
     /// <summary>
-    /// ƒXƒCƒbƒ`ƒIƒ“‰æ‘œ
+    /// ã‚¹ã‚¤ãƒƒãƒã‚ªãƒ³ç”»åƒ
     /// </summary>
     [SerializeField] Sprite switchOn;
 
     /// <summary>
-    /// ƒCƒxƒ“ƒgƒtƒ‰ƒO
+    /// ã‚¤ãƒ™ãƒ³ãƒˆãƒ•ãƒ©ã‚°
     /// </summary>
     protected bool eventFlag = false;
 
@@ -24,13 +24,13 @@ public abstract class SwitchButton : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒCƒxƒ“ƒg”­‰Î
+    /// ã‚¤ãƒ™ãƒ³ãƒˆç™ºç«
     /// </summary>
     public abstract void EventGO();
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //ƒ{[ƒ‹‚ÉG‚ê‚½‚çƒCƒxƒ“ƒg‹N“®
+        //ãƒœãƒ¼ãƒ«ã«è§¦ã‚ŒãŸã‚‰ã‚¤ãƒ™ãƒ³ãƒˆèµ·å‹•
         if(col.gameObject.CompareTag("Ball") && !eventFlag)
         {
             eventFlag = true;

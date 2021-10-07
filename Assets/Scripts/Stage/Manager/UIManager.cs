@@ -4,24 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// UIŠÇ—ƒNƒ‰ƒX
+/// UIç®¡ç†ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class UIManager : Singleton<UIManager>
 {
     protected override bool DontDestroy { get; } = true;
 
     /// <summary>
-    /// ƒQ[ƒ€ƒNƒŠƒAEƒQ[ƒ€ƒI[ƒo[ƒeƒLƒXƒg
+    /// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ãƒ»ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ãƒ†ã‚­ã‚¹ãƒˆ
     /// </summary>
     [SerializeField] Text displayText;
 
     /// <summary>
-    /// ƒXƒe[ƒW‚¨‘è•\¦ƒNƒ‰ƒX
+    /// ã‚¹ãƒ†ãƒ¼ã‚¸ãŠé¡Œè¡¨ç¤ºã‚¯ãƒ©ã‚¹
     /// </summary>
     [SerializeField] StageDisplay stageDisplay;
     string stageDisplayText = "";
     /// <summary>
-    /// •\¦ƒeƒLƒXƒg
+    /// è¡¨ç¤ºãƒ†ã‚­ã‚¹ãƒˆ
     /// </summary>
     public string StageDisplayText
     {
@@ -34,7 +34,7 @@ public class UIManager : Singleton<UIManager>
     }
 
     /// <summary>
-    /// ƒXƒe[ƒW‚¨‘è•\¦ƒtƒ‰ƒO
+    /// ã‚¹ãƒ†ãƒ¼ã‚¸ãŠé¡Œè¡¨ç¤ºãƒ•ãƒ©ã‚°
     /// </summary>
     bool dispMove = false;
 
@@ -42,35 +42,35 @@ public class UIManager : Singleton<UIManager>
     {
         if (!dispMove) return;
 
-        //‚¨‘èˆÚ“®
+        //ãŠé¡Œç§»å‹•
         if(stageDisplay.MoveEnd())
         {
-            //ˆÚ“®Š®—¹ŒãAƒQ[ƒ€ŠJn
+            //ç§»å‹•å®Œäº†å¾Œã€ã‚²ãƒ¼ãƒ é–‹å§‹
             GameManager.I.ChangeGamaMode(GameMode.GameStart);
             dispMove = false;
         }
     }
 
     /// <summary>
-    /// ƒQ[ƒ€ƒI[ƒo[ƒpƒlƒ‹•\¦
+    /// ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ãƒ‘ãƒãƒ«è¡¨ç¤º
     /// </summary>
     public void ActiveGameOver()
     {
-        displayText.text = "`ƒQ[ƒ€ƒI[ƒo[`";
+        displayText.text = "ï½ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ï½";
         displayText.gameObject.SetActive(true);
     }
 
     /// <summary>
-    /// ƒQ[ƒ€ƒNƒŠƒAƒpƒlƒ‹‚ğ•\¦
+    /// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ãƒ‘ãƒãƒ«ã‚’è¡¨ç¤º
     /// </summary>
     public void ActiveGameClear()
     {
-        displayText.text = "`ƒNƒŠƒA`";
+        displayText.text = "ï½ã‚¯ãƒªã‚¢ï½";
         displayText.gameObject.SetActive(true);
     }
 
     /// <summary>
-    /// ƒeƒLƒXƒg‚ğ”ñ•\¦
+    /// ãƒ†ã‚­ã‚¹ãƒˆã‚’éè¡¨ç¤º
     /// </summary>
     public void InActiveDisplayText()
     {

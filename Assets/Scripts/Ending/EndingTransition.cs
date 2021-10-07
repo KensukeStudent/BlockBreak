@@ -4,23 +4,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// ƒGƒ“ƒfƒBƒ“ƒOê—p‘JˆÚƒNƒ‰ƒX
+/// ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°å°‚ç”¨é·ç§»ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class EndingTransition : FadeBase
 {
     [SerializeField] GameObject[] effects;
 
     /// <summary>
-    /// ƒQ[ƒ€I‚í‚èƒtƒ‰ƒO
+    /// ã‚²ãƒ¼ãƒ çµ‚ã‚ã‚Šãƒ•ãƒ©ã‚°
     /// </summary>
     bool endFlag = false;
 
     /// <summary>
-    /// Œv‘ª
+    /// è¨ˆæ¸¬
     /// </summary>
     float timer = 0.0f;
     /// <summary>
-    /// ƒ^ƒCƒ€ƒŠƒ~ƒbƒg
+    /// ã‚¿ã‚¤ãƒ ãƒªãƒŸãƒƒãƒˆ
     /// </summary>
     float timeLimit = 3.5f;
 
@@ -56,7 +56,7 @@ public class EndingTransition : FadeBase
             effects[i].SetActive(true);
         }
 
-        //ƒQ[ƒ€ƒNƒŠƒASE
+        //ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢SE
         audioSE.PlayOneShot(audioSE.clip);
 
         GameManager.I.Delete();

@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒ{ƒbƒNƒX‚ğ‰ñ“]ƒNƒ‰ƒX
-/// ’†‰›‚©‚ç’e”­Ë
+/// ãƒœãƒƒã‚¯ã‚¹ã‚’å›è»¢ã‚¯ãƒ©ã‚¹
+/// ä¸­å¤®ã‹ã‚‰å¼¾ç™ºå°„
 /// </summary>
 public class AroundBoxMan : SwitchButton
 {
     /// <summary>
-    /// ƒ{ƒbƒNƒXƒIƒuƒWƒFƒNƒg
+    /// ãƒœãƒƒã‚¯ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     /// </summary>
     [SerializeField] GameObject[] boxes;
     
     /// <summary>
-    /// ”­Ë’e
+    /// ç™ºå°„å¼¾
     /// </summary>
     [SerializeField] GameObject shotObject;
 
     /// <summary>
-    /// ”¼Œa
+    /// åŠå¾„
     /// </summary>
     const float radius = 3.5f;
 
@@ -37,22 +37,22 @@ public class AroundBoxMan : SwitchButton
     }
 
     /// <summary>
-    /// ‰ŠúÀ•W‚ÉƒZƒbƒg
+    /// åˆæœŸåº§æ¨™ã«ã‚»ãƒƒãƒˆ
     /// </summary>
     void SetInitPos()
     {
         for (int i = 0; i < boxes.Length; i++)
         {
-            //‘S‘Ì‚Ìˆê‚Â“–‚½‚è‚ÌŠp“x
+            //å…¨ä½“ã®ä¸€ã¤å½“ãŸã‚Šã®è§’åº¦
             var angle = ( 360.0f / boxes.Length ) * i + 90;
             
-            //•\¦‚·‚é‹——£
+            //è¡¨ç¤ºã™ã‚‹è·é›¢
             var distance = radius - size / 2;
 
-            //Šp“x‚ğƒ‰ƒWƒAƒ“‚É•ÏŠ·
+            //è§’åº¦ã‚’ãƒ©ã‚¸ã‚¢ãƒ³ã«å¤‰æ›
             var rad =  angle * Mathf.Deg2Rad;
 
-            //‹——£ + Šp“x + ¶¬‚·‚ée‚ÌÀ•W
+            //è·é›¢ + è§’åº¦ + ç”Ÿæˆã™ã‚‹è¦ªã®åº§æ¨™
             var x = distance * Mathf.Cos(rad) + initPos.x;
             var y = distance * Mathf.Sin(rad) + initPos.y;
 
@@ -69,22 +69,22 @@ public class AroundBoxMan : SwitchButton
     }
 
     /// <summary>
-    /// ‰ñ“]ˆ—
+    /// å›è»¢å‡¦ç†
     /// </summary>
     void Around()
     {
         for (int i = 0; i < boxes.Length; i++)
         {
-            //•\¦‚·‚é‹——£
+            //è¡¨ç¤ºã™ã‚‹è·é›¢
             var distance = radius - size / 2;
 
-            //Šp“x‚ğƒ‰ƒWƒAƒ“‚É•ÏŠ·
+            //è§’åº¦ã‚’ãƒ©ã‚¸ã‚¢ãƒ³ã«å¤‰æ›
             var rad = angles[i] * Mathf.Deg2Rad;
 
-            //‰ñ“]
+            //å›è»¢
             var rotate = rad + Time.timeSinceLevelLoad;
 
-            //‹——£ + Šp“x + ¶¬‚·‚ée‚ÌÀ•W
+            //è·é›¢ + è§’åº¦ + ç”Ÿæˆã™ã‚‹è¦ªã®åº§æ¨™
             var x = distance * Mathf.Cos(rotate) + initPos.x;
             var y = distance * Mathf.Sin(rotate) + initPos.y;
 
@@ -98,7 +98,7 @@ public class AroundBoxMan : SwitchButton
         {
             var shot = Instantiate(shotObject, transform.position, Quaternion.identity);
 
-            //Šp“x•ÏŠ·
+            //è§’åº¦å¤‰æ›
             var rot = shot.transform.localEulerAngles;
             rot.z = angles[i];
             shot.transform.localEulerAngles = rot;

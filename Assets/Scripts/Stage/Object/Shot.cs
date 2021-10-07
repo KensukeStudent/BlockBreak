@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shot : MonoBehaviour
 {
     /// <summary>
-    /// ’e‚Ì‘¬“x
+    /// å¼¾ã®é€Ÿåº¦
     /// </summary>
     const float speed = 15.0f;
 

@@ -6,15 +6,15 @@ public class PlayerBase : ActorBase
 {
     public enum MoveMode
     {
-        GameMode, //”CˆÓ‘€ì
-        AutoMode@//ƒI[ƒg‘€ì
+        GameMode, //ä»»æ„æ“ä½œ
+        AutoModeã€€//ã‚ªãƒ¼ãƒˆæ“ä½œ
     }
 
     MoveMode moveMode = MoveMode.GameMode;
 
     protected virtual void FixedUpdate()
     {
-        //‰¡‚ÌˆÚ“®
+        //æ¨ªã®ç§»å‹•
         var h = Input.GetAxisRaw("Horizontal");
 
         var move = rb2D.velocity;
@@ -45,7 +45,7 @@ public class PlayerBase : ActorBase
     }
 
     /// <summary>
-    /// ƒI[ƒgˆÚ“®•ûŒü
+    /// ã‚ªãƒ¼ãƒˆç§»å‹•æ–¹å‘
     /// </summary>
     protected virtual float AutoModeDirection()
     {
@@ -55,7 +55,7 @@ public class PlayerBase : ActorBase
     protected virtual void Update()
     {
         var pos = transform.position;
-        //‚‚³‚©‚çƒAƒjƒ[ƒVƒ‡ƒ“‚ğ•ÏX
+        //é«˜ã•ã‹ã‚‰ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å¤‰æ›´
         var y = Mathf.Round(rb2D.velocity.y);
         anim.SetBool("Jump", y > 0 && !IsGround(pos));
         anim.SetBool("Fall", (y == 0 || y < 0) && !IsGround(pos));
@@ -63,27 +63,27 @@ public class PlayerBase : ActorBase
         if (!JumpFlag()) return;
 
         if (moveMode != MoveMode.GameMode) return;
-        //c‚ÌˆÚ“®
+        //ç¸¦ã®ç§»å‹•
         var v = Input.GetAxisRaw("Vertical");
 
         if (IsGround(pos))
         {
-            //ƒWƒƒƒ“ƒvˆ—
+            //ã‚¸ãƒ£ãƒ³ãƒ—å‡¦ç†
             Jump(v);
         }
 
-        //”h¶‚à‚Æ‚ÌXVˆ—
+        //æ´¾ç”Ÿã‚‚ã¨ã®æ›´æ–°å‡¦ç†
         transform.position = OnUpdate(pos);
     }
 
     /// <summary>
-    /// XVˆ—
+    /// æ›´æ–°å‡¦ç†
     /// </summary>
-    /// <param name="pos">ƒvƒŒƒCƒ„[À•W</param>
+    /// <param name="pos">ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åº§æ¨™</param>
     protected virtual Vector2 OnUpdate(Vector2 pos) { return pos; }
 
     /// <summary>
-    /// ˆÚ“®ƒ‚[ƒh‚ğ•ÏX
+    /// ç§»å‹•ãƒ¢ãƒ¼ãƒ‰ã‚’å¤‰æ›´
     /// </summary>
     public virtual void ChangeMoveMode(MoveMode mode)
     {
@@ -91,7 +91,7 @@ public class PlayerBase : ActorBase
     }
 
     /// <summary>
-    /// ƒWƒƒƒ“ƒvƒtƒ‰ƒO
+    /// ã‚¸ãƒ£ãƒ³ãƒ—ãƒ•ãƒ©ã‚°
     /// </summary>
     /// <returns></returns>
     protected virtual bool JumpFlag() { return true; }

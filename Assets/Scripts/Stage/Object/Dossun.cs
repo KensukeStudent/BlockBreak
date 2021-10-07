@@ -15,31 +15,31 @@ public class Dossun : MonoBehaviour
 
     SpriteRenderer sr;
     /// <summary>
-    /// —‰º‚·‚é‚ÌŠç‰æ‘œ
+    /// è½ä¸‹ã™ã‚‹æ™‚ã®é¡”ç”»åƒ
     /// </summary>
     [SerializeField] Sprite fallFace;
     Rigidbody2D rb2d;
     /// <summary>
-    /// —‰º‘¬“x
+    /// è½ä¸‹é€Ÿåº¦
     /// </summary>
     float fallSpeed = 20.0f;
     /// <summary>
-    /// —‰ºƒGƒtƒFƒNƒg
+    /// è½ä¸‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
     /// </summary>
     [SerializeField] GameObject fallEffect;
 
     /// <summary>
-    /// ‰ŠúÀ•W
+    /// åˆæœŸåº§æ¨™
     /// </summary>
     Vector2 initPos;
 
     /// <summary>
-    /// ˆÚ“®‘¬“x
+    /// ç§»å‹•é€Ÿåº¦
     /// </summary>
     const float moveSpeed = 0.5f;
 
     /// <summary>
-    /// ˆÚ“®’·‚³
+    /// ç§»å‹•é•·ã•
     /// </summary>
     const float moveLength = 2.0f;
 
@@ -60,7 +60,7 @@ public class Dossun : MonoBehaviour
             case MoveType.MoveRepeat:
                 
                 var pos = transform.position;
-                //üŠú‰^“®
+                //å‘¨æœŸé‹å‹•
                 var rad = Time.timeSinceLevelLoad * Mathf.PI;
                 pos.x = Mathf.Cos(rad * moveSpeed) * moveLength + initPos.x;
                 transform.position = pos;
@@ -69,9 +69,9 @@ public class Dossun : MonoBehaviour
             
             case MoveType.Fall:
 
-                //—‰ºˆÚ“®
+                //è½ä¸‹ç§»å‹•
                 var move = rb2d.velocity;
-                //—‰º‘¬“x‚ğã¸
+                //è½ä¸‹é€Ÿåº¦ã‚’ä¸Šæ˜‡
                 move.y -= Time.deltaTime * fallSpeed;
                 rb2d.velocity = move;
 
@@ -83,30 +83,30 @@ public class Dossun : MonoBehaviour
     }
 
     /// <summary>
-    /// —‰ºƒtƒ‰ƒOƒZƒbƒg
+    /// è½ä¸‹ãƒ•ãƒ©ã‚°ã‚»ãƒƒãƒˆ
     /// </summary>
     public void SetFallFlag()
     {
         moveType = MoveType.Fall;
-        //•¨—‘¬“x‚ğ‰Šú‰»
+        //ç‰©ç†é€Ÿåº¦ã‚’åˆæœŸåŒ–
         rb2d.velocity = Vector2.zero;
-        //“®“I‚È‚à‚Ì‚É•Ï‰»
+        //å‹•çš„ãªã‚‚ã®ã«å¤‰åŒ–
         rb2d.bodyType = RigidbodyType2D.Dynamic;
-        //—‰º‚ÉŠç‚ğ•Ï‰»
+        //è½ä¸‹æ™‚ã«é¡”ã‚’å¤‰åŒ–
         sr.sprite = fallFace;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //°‚É“–‚½‚Á‚½‚ç—‰º‚ğ’â~
+        //åºŠã«å½“ãŸã£ãŸã‚‰è½ä¸‹ã‚’åœæ­¢
         if(col.gameObject.CompareTag("Ground"))
         {
             moveType = MoveType.End;
             rb2d.velocity = Vector2.zero;
-            //“®“I‚È‚à‚Ì‚É•Ï‰»
+            //å‹•çš„ãªã‚‚ã®ã«å¤‰åŒ–
             rb2d.bodyType = RigidbodyType2D.Kinematic;
 
-            //ƒGƒtƒFƒNƒg¶¬
+            //ã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”Ÿæˆ
 
         }
     }
