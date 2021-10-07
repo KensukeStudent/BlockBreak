@@ -682,7 +682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd69d6fe2f20b740b1d53a6eaef351d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1808700511}
   titleFade: {fileID: 1925014199}
 --- !u!4 &511299728
 Transform:
@@ -1672,7 +1671,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "A,D,\u2190,\u2192\uFF1A\u79FB\u52D5\u3001\u30B9\u30DA\u30FC\u30B9\uFF1A\u30B8\u30E3\u30F3\u30D7\u3001\u30DE\u30A6\u30B9\u53F3\u30AF\u30EA\u30C3\u30AF\uFF1A\u5C04\u6483(\u5927\u4F1A\u306E\u6642\u3064\u304B\u3048\u308B)"
+  m_Text: "A,D,\u2190,\u2192\uFF1A\u79FB\u52D5\u3001\u30B9\u30DA\u30FC\u30B9\uFF1A\u30B8\u30E3\u30F3\u30D7\u3001\u30DE\u30A6\u30B9\u5DE6\u30AF\u30EA\u30C3\u30AF\uFF1A\u5C04\u6483(\u5927\u4F1A\u306E\u6642\u3064\u304B\u3048\u308B)"
 --- !u!222 &1730458676
 CanvasRenderer:
   m_ObjectHideFlags: 0
