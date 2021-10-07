@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// 全てのステージを管理
 /// </summary>
-public class StageManager : MonoBehaviour
+public class StageManager : Singleton<StageManager>
 {
+    protected override bool DontDestroy { get; } = true;
+
     /// <summary>
     /// ステージ数
     /// </summary>
@@ -55,7 +57,7 @@ public class StageManager : MonoBehaviour
         {
             SceneManager.LoadScene("Ending");
 
-            GameManager.Instance.ChangeGamaMode(GameMode.GameAllClear);
+            GameManager.I.ChangeGamaMode(GameMode.GameAllClear);
         }
         //ゲームステージ時の処理
         else

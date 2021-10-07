@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// �^�C�g���J�ڃN���X
+/// タイトル遷移クラス
 /// </summary>
 public class TitleTransition : FadeBase
 {
     /// <summary>
-    /// title�p�̃I�[�f�B�I
+    /// title用のオーディオ
     /// </summary>
     [SerializeField] AudioSource audio;
 
@@ -17,7 +17,7 @@ public class TitleTransition : FadeBase
 
     private void Start()
     {
-        //�J�ڃt���O�Z�b�g
+        //遷移フラグセット
         SetFadeMode(FadeBase.FadeSequenceType.In);
     }
 

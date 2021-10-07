@@ -12,8 +12,10 @@ public enum BallType
 /// <summary>
 /// ステージに応じたボール割り当てるクラス
 /// </summary>
-public class BallManager : MonoBehaviour
+public class BallManager : Singleton<BallManager>
 {
+    protected override bool DontDestroy { get; } = true;
+
     const int ballTypeCount = 3;
     [SerializeField] BallAblity[] ballAblities = new BallAblity[ballTypeCount];
     [SerializeField] GameObject ball;

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
  
 /// <summary>
-/// ƒvƒŒƒCƒ„[UIƒNƒ‰ƒX
+/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼UIã‚¯ãƒ©ã‚¹
 /// </summary>
 public class PlayerUI : MonoBehaviour
 {
@@ -11,33 +11,33 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] TMP_Text playerText;
 
     /// <summary>
-    /// Ÿ‚Á‚½Žž‚ÌƒeƒLƒXƒg
+    /// å‹ã£ãŸæ™‚ã®ãƒ†ã‚­ã‚¹ãƒˆ
     /// </summary>
     string[] winText = 
     { 
-        "‚©‚¿‚Ü‚µ‚½`", 
-        "‚â‚Á‚½[", 
-        "‚Æ‚ë‚Ó‚¡[‚¤‚è‚½‚¢BB", 
-        "‚ ‚Æ‚à‚¤‚·‚±‚µ[", 
-        "‚¨‚Á‚¯`‚¢", 
-        "‚æ‚ä‚¤‚·‚¬‚½", 
+        "ã‹ã¡ã¾ã—ãŸï½ž", 
+        "ã‚„ã£ãŸãƒ¼", 
+        "ã¨ã‚ãµãƒãƒ¼ã†ã‚ŠãŸã„ã€‚ã€‚", 
+        "ã‚ã¨ã‚‚ã†ã™ã“ã—ãƒ¼", 
+        "ãŠã£ã‘ï½žã„", 
+        "ã‚ˆã‚†ã†ã™ãŽãŸ", 
     };
 
     /// <summary>
-    /// •‰‚¯‚½Žž‚ÌƒeƒLƒXƒg
+    /// è² ã‘ãŸæ™‚ã®ãƒ†ã‚­ã‚¹ãƒˆ
     /// </summary>
     string[] loseText =
     {
-        "‚±‚ê‚¨‚í‚Á‚½ƒpƒ^[ƒ“H",
-        "‚Ú‚­‚Ì‚¹‚¢‚©‚Í‚Þ‚­‚í‚ê‚È‚¢.....",
-        "‚à‚¤A\n‚©‚¦‚é‚íB",
-        "‚Í‚ç‚Ö‚Á‚½`",
-        "BBBB",
-        "ƒOƒbƒpƒCA‚Ú‚­‚Ì‚¶‚ñ‚¹‚¢B"
+        "ã“ã‚ŒãŠã‚ã£ãŸãƒ‘ã‚¿ãƒ¼ãƒ³ï¼Ÿ",
+        "ã¼ãã®ã›ã„ã‹ã¯ã‚€ãã‚ã‚Œãªã„.....",
+        "ã‚‚ã†ã€\nã‹ãˆã‚‹ã‚ã€‚",
+        "ã¯ã‚‰ã¸ã£ãŸï½ž",
+        "ã€‚ã€‚ã€‚ã€‚",
+        "ã‚°ãƒƒãƒ‘ã‚¤ã€ã¼ãã®ã˜ã‚“ã›ã„ã€‚"
     };
 
     /// <summary>
-    /// ƒXƒe[ƒW‚Ìó‹µ‚É‚æ‚Á‚ÄŒ¾—t‚ª•Ï‰»‚·‚é
+    /// ã‚¹ãƒ†ãƒ¼ã‚¸ã®çŠ¶æ³ã«ã‚ˆã£ã¦è¨€è‘‰ãŒå¤‰åŒ–ã™ã‚‹
     /// </summary>
     public void SetVoice()
     {
@@ -47,7 +47,7 @@ public class PlayerUI : MonoBehaviour
 
         var strVoice = "";
 
-        switch (GameManager.Instance.gameMode)
+        switch (GameManager.I.gameMode)
         {
             case GameMode.GameOver:
 

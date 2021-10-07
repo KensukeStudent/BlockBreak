@@ -55,6 +55,6 @@ public class BoxManager : MonoBehaviour
     /// </summary>
     void GameClear()
     {
-        GameManager.Instance.ChangeGamaMode(GameMode.GameClear);
+        GameManager.I.ChangeGamaMode(GameMode.GameClear);
     }
 }

@@ -56,10 +56,13 @@ public class EndingTransition : FadeBase
             effects[i].SetActive(true);
         }
 
-        //ゲームクリアBGM
-
         //ゲームクリアSE
         audioSE.PlayOneShot(audioSE.clip);
+
+        GameManager.I.Delete();
+        UIManager.I.Delete();
+        StageManager.I.Delete();
+        BallManager.I.Delete();
     }
 
     protected override void FadeOutBase()

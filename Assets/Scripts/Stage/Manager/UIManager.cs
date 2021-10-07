@@ -6,8 +6,10 @@ using UnityEngine.UI;
 /// <summary>
 /// UI管理クラス
 /// </summary>
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
+    protected override bool DontDestroy { get; } = true;
+
     /// <summary>
     /// ゲームクリア・ゲームオーバーテキスト
     /// </summary>
@@ -30,6 +32,7 @@ public class UIManager : MonoBehaviour
             stageDisplay.Initialize(stageDisplayText);
         }
     }
+
     /// <summary>
     /// ステージお題表示フラグ
     /// </summary>
@@ -43,7 +46,7 @@ public class UIManager : MonoBehaviour
         if(stageDisplay.MoveEnd())
         {
             //移動完了後、ゲーム開始
-            GameManager.Instance.ChangeGamaMode(GameMode.GameStart);
+            GameManager.I.ChangeGamaMode(GameMode.GameStart);
             dispMove = false;
         }
     }

@@ -53,7 +53,7 @@ public class Dossun : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.gameMode != GameMode.GameStart) return;
+        if (GameManager.I.gameMode != GameMode.GameStart) return;
 
         switch (moveType)
         {

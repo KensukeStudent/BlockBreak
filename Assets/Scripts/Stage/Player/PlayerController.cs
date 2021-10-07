@@ -40,7 +40,7 @@ public class PlayerController : PlayerBase
 
     protected override float GameModeDirection(float h)
     {
-        if (GameManager.Instance.gameMode != GameMode.GameStart) return 0.0f;
+        if (GameManager.I.gameMode != GameMode.GameStart) return 0.0f;
 
         return base.GameModeDirection(h);
     }
@@ -49,7 +49,7 @@ public class PlayerController : PlayerBase
     {
         var move = 1;
 
-        switch (GameManager.Instance.gameMode)
+        switch (GameManager.I.gameMode)
         {
             case GameMode.GameOver:
                 move = -1;
@@ -64,7 +64,7 @@ public class PlayerController : PlayerBase
 
     protected override bool JumpFlag()
     {
-        return GameManager.Instance.gameMode == GameMode.GameStart;
+        return GameManager.I.gameMode == GameMode.GameStart;
     }
 
     protected override Vector2 OnUpdate(Vector2 pos)

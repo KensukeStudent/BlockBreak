@@ -14,9 +14,10 @@ public enum GameMode
 /// <summary>
 /// ゲーム管理
 /// </summary>
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance { private set; get; }
+    protected override bool DontDestroy { get; } = true;
+
     public GameMode gameMode { private set; get; } = GameMode.GameWait;
     /// <summary>
     /// UI管理クラス
@@ -31,14 +32,6 @@ public class GameManager : MonoBehaviour
     /// プレイヤークラス
     /// </summary>
     PlayerController player;
-
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-    }
 
     private void Update()
     {

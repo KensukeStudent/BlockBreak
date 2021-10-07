@@ -38,7 +38,7 @@ public class StageTransition : FadeBase
             audio.Play();
         }
 
-        switch (GameManager.Instance.gameMode)
+        switch (GameManager.I.gameMode)
         {
             case GameMode.GameWait:
 
@@ -72,10 +72,10 @@ public class StageTransition : FadeBase
 
         //※ゲームオールクリア時に
         //モードを変更するので変数として定義します
-        var gameMode = GameManager.Instance.gameMode;
+        var gameMode = GameManager.I.gameMode;
 
         //Waitモードへ切り替え
-        GameManager.Instance.ChangeGamaMode(GameMode.GameWait);
+        GameManager.I.ChangeGamaMode(GameMode.GameWait);
 
         switch (gameMode)
         {
@@ -91,7 +91,7 @@ public class StageTransition : FadeBase
                 stageMan.NextSceneLoad();
 
                 //ゲームを全てクリアしたらオーディオを止める
-                if (GameManager.Instance.gameMode == GameMode.GameAllClear) audio.Stop();
+                if (GameManager.I.gameMode == GameMode.GameAllClear) audio.Stop();
 
                 break;
 

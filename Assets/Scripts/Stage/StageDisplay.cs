@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒXƒe[ƒW‚¨‘è•\¦ƒNƒ‰ƒX
+/// ã‚¹ãƒ†ãƒ¼ã‚¸ãŠé¡Œè¡¨ç¤ºã‚¯ãƒ©ã‚¹
 /// </summary>
 public class StageDisplay : MonoBehaviour
 {
@@ -15,37 +15,37 @@ public class StageDisplay : MonoBehaviour
         End
     }
     /// <summary>
-    /// ˆÚ“®ƒ‚[ƒh
+    /// ç§»å‹•ãƒ¢ãƒ¼ãƒ‰
     /// </summary>
     MoveMode mode = MoveMode.Start;
 
     /// <summary>
-    /// ‰¡•
+    /// æ¨ªå¹…
     /// </summary>
     const float witdh = 1600.0f;
     /// <summary>
-    /// •\¦ƒfƒBƒXƒvƒŒƒC‚‚³
+    /// è¡¨ç¤ºãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤é«˜ã•
     /// </summary>
     const float hight = -135.0f;
 
     RectTransform rect;
 
     /// <summary>
-    /// ˆÚ“®‘¬“x
+    /// ç§»å‹•é€Ÿåº¦
     /// </summary>
     float moveSpeed = 2500.0f;
 
     /// <summary>
-    /// Œv‘ª
+    /// è¨ˆæ¸¬
     /// </summary>
     float timer = 0.0f;
     /// <summary>
-    /// ’â~ŠÔ
+    /// åœæ­¢æ™‚é–“
     /// </summary>
     float stopTime = 1.2f;
 
     /// <summary>
-    /// ˆÚ“®Š®—¹
+    /// ç§»å‹•å®Œäº†
     /// </summary>
     bool moveFinish = false;
 
@@ -57,9 +57,9 @@ public class StageDisplay : MonoBehaviour
     }
 
     /// <summary>
-    /// ‰Šú‰»
+    /// åˆæœŸåŒ–
     /// </summary>
-    /// <param name="displayText">ƒXƒe[ƒW•\¦ƒeƒLƒXƒg</param>
+    /// <param name="displayText">ã‚¹ãƒ†ãƒ¼ã‚¸è¡¨ç¤ºãƒ†ã‚­ã‚¹ãƒˆ</param>
     public void Initialize(string displayText)
     {
         mode = MoveMode.Start;
@@ -70,7 +70,7 @@ public class StageDisplay : MonoBehaviour
     }
 
     /// <summary>
-    /// ˆÚ“®‚µI‚í‚Á‚½ƒtƒ‰ƒO
+    /// ç§»å‹•ã—çµ‚ã‚ã£ãŸãƒ•ãƒ©ã‚°
     /// </summary>
     public bool MoveEnd()
     {

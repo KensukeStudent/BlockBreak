@@ -11,7 +11,7 @@ public class Shot : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.gameMode != GameMode.GameStart) return;
+        if (GameManager.I.gameMode != GameMode.GameStart) return;
 
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }

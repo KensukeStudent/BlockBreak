@@ -61,7 +61,7 @@ public class BallBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (GameManager.Instance.gameMode != GameMode.GameStart) return;
+        if (GameManager.I.gameMode != GameMode.GameStart) return;
 
         var pos = transform.position;
         
@@ -75,7 +75,7 @@ public class BallBase : MonoBehaviour
         if(ablity.DeadFlag())
         {
             //ゲームオーバー処理
-            GameManager.Instance.ChangeGamaMode(GameMode.GameOver);
+            GameManager.I.ChangeGamaMode(GameMode.GameOver);
 
             gameObject.SetActive(false);
         }

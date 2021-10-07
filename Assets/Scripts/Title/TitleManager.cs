@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒ^ƒCƒgƒ‹‰æ–ÊŠÇ—ƒNƒ‰ƒX
+/// ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ç®¡ç†ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class TitleManager : MonoBehaviour
 {
     /// <summary>
-    /// ƒ^ƒCƒgƒ‹ƒvƒŒƒCƒ„[
+    /// ã‚¿ã‚¤ãƒˆãƒ«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
     /// </summary>
     PlayerBase player;
     /// <summary>
-    /// ƒ^ƒCƒgƒ‹‘JˆÚƒNƒ‰ƒX
+    /// ã‚¿ã‚¤ãƒˆãƒ«é·ç§»ã‚¯ãƒ©ã‚¹
     /// </summary>
     [SerializeField] TitleTransition titleFade;
     AudioSource audio;
 
     /// <summary>
-    /// ƒQ[ƒ€ŠJnXÀ•W
+    /// ã‚²ãƒ¼ãƒ é–‹å§‹Xåº§æ¨™
     /// </summary>
     const float startPosX = 6.5f;
 
     /// <summary>
-    /// ƒQ[ƒ€ŠJnƒtƒ‰ƒO
+    /// ã‚²ãƒ¼ãƒ é–‹å§‹ãƒ•ãƒ©ã‚°
     /// </summary>
     bool gameStart = false;
 
@@ -42,12 +42,12 @@ public class TitleManager : MonoBehaviour
         if(posPlayer.x >= startPosX)
         {
             gameStart = true;
-            //ƒvƒŒƒCƒ„[©“®ˆÚ“®ƒ‚[ƒh
+            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼è‡ªå‹•ç§»å‹•ãƒ¢ãƒ¼ãƒ‰
             player.ChangeMoveMode(PlayerBase.MoveMode.AutoMode);
-            //‘JˆÚƒtƒ‰ƒOƒZƒbƒg
+            //é·ç§»ãƒ•ãƒ©ã‚°ã‚»ãƒƒãƒˆ
             titleFade.SetFadeFlag();
 
-            //ƒXƒ^[ƒg‰¹
+            //ã‚¹ã‚¿ãƒ¼ãƒˆéŸ³
             audio.PlayOneShot(audio.clip);
         }
     }
